@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Product from '../Product/Product';
 import './Products.css'
+import Cart from '../Cart/Cart';
+import { addToDb } from '../../fakedb';
+import { useLoaderData } from 'react-router-dom';
 
 
-const Products = (props) => {
-    console.log(props)
-    const [products, setproducts] = useState([])
+
+
+const Products = () => {
+    const products = useLoaderData()
+    console.log(products)
     const [cart, setcart] = useState([])
-    useEffect(() => {
-        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
-            .then(response => response.json())
-            .then(data => setproducts(data))
-    }, [])
+
 
     const handleAddtoCart = (product) => {
-        // console.log(product)
+        console.log(product)
         const newCart = [...cart, product]
         setcart(newCart)
-        console.log(newCart)
-    }
+        addToDb(product.id)
 
+
+
+
+
+    }
 
 
     return (
@@ -28,10 +33,14 @@ const Products = (props) => {
                 <div className="product-container">
                     {
                         products.map(product => <Product product={product} keys={product.id} handleAddtoCart={handleAddtoCart}></Product>)
+
                     }
+                    <h1>hi</h1>
+
+
                 </div>
                 <div className="cart-container">
-                    <h2>Selected Items : {cart.length}</h2>
+                    <Cart cart={cart}></Cart>
                 </div>
             </div>
         </div>

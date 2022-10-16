@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../../logo.svg'
 import './Menu.css'
 
@@ -10,10 +11,10 @@ const Menu = () => {
                     <img src={logo} alt="" />
                 </div>
                 <div>
-                    <a href="/order">Order</a>
-                    <a href="/order-review">Order Review</a>
-                    <a href="/inventory Management">Inventory Management</a>
-                    <a href="/login">Login</a>
+                    <NavLink to="/shop">Shop</NavLink>
+                    <NavLink to="/order-review">Order Review</NavLink>
+                    <NavLink to="/inventory Management">Inventory Management</NavLink>
+                    <NavLink to="/login">Loginste</NavLink>
                 </div>
             </nav>
         </div>
