@@ -12,9 +12,7 @@ function App() {
       path: '/',
 
       element: <Main></Main>,
-      // loader: async () => {
-      //   return fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
-      // },
+
       children: [
         {
           path: '/',
@@ -28,7 +26,7 @@ function App() {
         {
           path: '/shop',
           loader: async () => {
-            return fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
+            return fetch('products.json')
           },
           element: < Products ></Products >
         },
@@ -36,7 +34,7 @@ function App() {
           path: '/order-review',
 
           loader: async () => {
-            return fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
+            return fetch('products.json')
           },
           element: <OrderReview></OrderReview>
         }
